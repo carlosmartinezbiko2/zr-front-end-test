@@ -17,3 +17,10 @@ export const ProductDetailPageDescription = styled.div`
   flex-grow: 1;
   flex-basis: 0;
 `
+
+export const ProductDetailBlock = styled.div`
+  padding: ${rem(16)};
+  margin-bottom: ${rem(16)};
+  border-radius: ${rem(16)};
+  border: 4px solid #eee;
+`
