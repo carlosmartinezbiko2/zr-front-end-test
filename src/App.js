@@ -1,5 +1,10 @@
 import React from 'react'
 
 export function App() {
-  return <>Hola mundo</>
+  return (
+    <>
+      <header>ZR Mobile</header>
+      Hola mundo
+    </>
+  )
 }
