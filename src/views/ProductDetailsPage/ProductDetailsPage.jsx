@@ -39,7 +39,7 @@ export function ProductDetailsPage() {
             title="Resolución de pantalla"
             value={productDetail.displayResolution}
           />
-          <DescriptionItem title="battery" value={productDetail.brand} />
+          <DescriptionItem title="Batería" value={productDetail.battery} />
           <DescriptionItem
             title="Camara frontal"
             value={productDetail.secondaryCmera}
