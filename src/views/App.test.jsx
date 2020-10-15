@@ -25,9 +25,9 @@ describe('ZR Mobile', () => {
     const productModel = 'Iconia Talk S'
     renderWithRouter(<App />, `/${productId}`)
 
-    const productIdText = await screen.findByText(productModel)
+    const products = await screen.findAllByText(productModel)
 
-    expect(productIdText).toBeInTheDocument()
+    expect(products).toHaveLength(2)
   })
 
   it('Navega al listado al hacer click en el title del header', async () => {
@@ -50,8 +50,8 @@ describe('ZR Mobile', () => {
 
     fireEvent.click(product)
 
-    const productIdText = await screen.findByText(productModel)
+    const products = await screen.findAllByText(productModel)
 
-    expect(productIdText).toBeInTheDocument()
+    expect(products).toHaveLength(2)
   })
 })
