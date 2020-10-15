@@ -1,7 +1,7 @@
 import React from 'react'
 import { screen } from '@testing-library/react'
 import { App } from './App'
-import { renderWithRouter } from '../utils/test/renderWithRouter'
+import { renderWithRouter } from 'utils/test/renderWithRouter'
 
 describe('ZR Mobile', () => {
   it('Muestra el header de la aplicación', () => {
