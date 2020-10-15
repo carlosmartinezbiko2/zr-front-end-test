@@ -20,11 +20,12 @@ describe('ZR Mobile', () => {
     expect(listOfProducts).toBeInTheDocument()
   })
 
-  it('Muestra la página de detalle de un producto', () => {
+  it('Muestra la página de detalle de un producto', async () => {
     const productId = 'ZmGrkLRPXOTpxsU4jjAcv'
+    const productModel = 'Iconia Talk S'
     renderWithRouter(<App />, `/${productId}`)
 
-    const productIdText = screen.getByText(productId)
+    const productIdText = await screen.findByText(productModel)
 
     expect(productIdText).toBeInTheDocument()
   })
@@ -42,7 +43,6 @@ describe('ZR Mobile', () => {
   })
 
   it('Navega al detalle al hacer click en un producto', async () => {
-    const productId = 'ZmGrkLRPXOTpxsU4jjAcv'
     const productModel = 'Iconia Talk S'
     renderWithRouter(<App />, '/')
 
@@ -50,7 +50,7 @@ describe('ZR Mobile', () => {
 
     fireEvent.click(product)
 
-    const productIdText = screen.getByText(productId)
+    const productIdText = await screen.findByText(productModel)
 
     expect(productIdText).toBeInTheDocument()
   })
