@@ -27,4 +27,17 @@ describe('ZR Mobile', () => {
 
     expect(listaDeProductosText).toBeInTheDocument()
   })
+
+  it('Muestra la página de detalle de un producto', () => {
+    const productId = 'productId'
+    render(
+      <MemoryRouter initialEntries={[`/${productId}`]}>
+        <App />
+      </MemoryRouter>,
+    )
+
+    const idProductoText = screen.getByText(productId)
+
+    expect(idProductoText).toBeInTheDocument()
+  })
 })
