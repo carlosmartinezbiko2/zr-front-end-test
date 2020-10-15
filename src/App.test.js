@@ -10,4 +10,12 @@ describe('ZR Mobile', () => {
 
     expect(holaMundo).toBeInTheDocument()
   })
+
+  it('Muestra el header de la aplicación', () => {
+    render(<App />)
+
+    const headerText = screen.getByText('ZR Mobile')
+
+    expect(headerText).toBeInTheDocument()
+  })
 })
