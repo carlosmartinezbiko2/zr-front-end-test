@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 import { App } from './App'
 
 describe('ZR Mobile', () => {
@@ -11,5 +12,15 @@ describe('ZR Mobile', () => {
     expect(headerText).toBeInTheDocument()
   })
 
-  it('Mue')
+  it('Muestra la página de listado de productos', () => {
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <App />
+      </MemoryRouter>,
+    )
+
+    const listaDeProductosText = screen.getByText('Lista de productos')
+
+    expect(listaDeProductosText).toBeInTheDocument()
+  })
 })
