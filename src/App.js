@@ -4,7 +4,6 @@ export function App() {
   return (
     <>
       <header>ZR Mobile</header>
-      Hola mundo
     </>
   )
 }
