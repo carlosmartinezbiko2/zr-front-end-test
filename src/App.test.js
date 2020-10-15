@@ -5,7 +5,11 @@ import { App } from './App'
 
 describe('ZR Mobile', () => {
   it('Muestra el header de la aplicación', () => {
-    render(<App />)
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <App />
+      </MemoryRouter>,
+    )
 
     const headerText = screen.getByText('ZR Mobile')
 
