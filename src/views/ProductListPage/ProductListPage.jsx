@@ -6,6 +6,7 @@ import {
   ProductListContainer,
   ProductListHeader,
   ProductListTitle,
+  SearchInput,
 } from './ProductListPage.styles'
 
 export function ProductListPage() {
@@ -26,7 +27,7 @@ export function ProductListPage() {
         <ProductListTitle>Lista de productos</ProductListTitle>
         <label>
           Buscar:{' '}
-          <input
+          <SearchInput
             name="search"
             value={searchValue}
             onChange={(event) => setSearchValue(event.target.value)}

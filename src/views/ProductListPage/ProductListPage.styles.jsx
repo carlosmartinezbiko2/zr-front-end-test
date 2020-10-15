@@ -15,3 +15,10 @@ export const ProductListContainer = styled.section`
   column-gap: ${rem(16)};
   row-gap: ${rem(16)};
 `
+
+export const SearchInput = styled.input`
+  padding: ${rem(8)};
+  background-color: #eee;
+  border: none;
+  border-radius: ${rem(8)};
+`

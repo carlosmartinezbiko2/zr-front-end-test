@@ -5,9 +5,10 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
 
-  padding: ${rem(8)};
+  padding: ${rem(12)};
 
-  border-bottom: solid 1px black;
+  background-color: #eee;
+  border-radius: ${rem(8)};
 `
 
 export const TitleWrapper = styled.div`
