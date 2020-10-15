@@ -8,7 +8,7 @@ export const ProductListItemWrapper = styled.article`
 `
 
 export const ProductListItemImage = styled.img`
-  max-width: 100%;
+  width: 100%;
 `
 
 export const DescriptionWrapper = styled.div``
