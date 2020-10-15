@@ -4,5 +4,5 @@ import { useParams } from 'react-router-dom'
 export function ProductDetailsPage() {
   const { productId } = useParams()
 
-  return <>{<>{productId}</>}</>
+  return <>{productId}</>
 }
