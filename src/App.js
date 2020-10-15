@@ -9,6 +9,10 @@ export function App() {
         <Route exact path="/">
           Lista de productos
         </Route>
+        <Route
+          path="/:productId"
+          render={({ match }) => <>{match.params.productId}</>}
+        />
       </Switch>
     </>
   )
