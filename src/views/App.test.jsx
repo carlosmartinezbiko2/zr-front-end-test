@@ -12,10 +12,10 @@ describe('ZR Mobile', () => {
     expect(headerText).toBeInTheDocument()
   })
 
-  it('Muestra la página de listado de productos', () => {
+  it('Muestra la página de listado de productos', async () => {
     renderWithRouter(<App />, '/')
 
-    const listaDeProductosText = screen.getByText('Lista de productos')
+    const listaDeProductosText = await screen.findByText('Lista de productos')
 
     expect(listaDeProductosText).toBeInTheDocument()
   })

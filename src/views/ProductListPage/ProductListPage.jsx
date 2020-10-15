@@ -1,11 +1,17 @@
 import React from 'react'
-import { productService } from 'core/productService'
+
+import { useProductList } from './ProductListPage.hooks'
 
 export function ProductListPage() {
-  const [productList, setProductList] = React.useState()
-  React.useEffect(() => {
-    productService.getProductList().then(setProductList)
-  }, [])
+  const { productList, isError, isLoading } = useProductList()
+
+  if (isLoading) {
+    return <>Cargando...</>
+  }
+
+  if (isError) {
+    return <>Ups! Ha ocurrido un error</>
+  }
 
   return (
     <>
