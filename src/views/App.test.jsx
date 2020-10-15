@@ -24,9 +24,9 @@ describe('ZR Mobile', () => {
     const productId = 'ZmGrkLRPXOTpxsU4jjAcv'
     renderWithRouter(<App />, `/${productId}`)
 
-    const idProductoText = screen.getByText(productId)
+    const productIdText = screen.getByText(productId)
 
-    expect(idProductoText).toBeInTheDocument()
+    expect(productIdText).toBeInTheDocument()
   })
 
   it('Navega al listado al hacer click en el title del header', async () => {
@@ -39,5 +39,19 @@ describe('ZR Mobile', () => {
     const listOfProducts = await screen.findByText('Lista de productos')
 
     expect(listOfProducts).toBeInTheDocument()
+  })
+
+  it('Navega al detalle al hacer click en un producto', async () => {
+    const productId = 'ZmGrkLRPXOTpxsU4jjAcv'
+    const productModel = 'Iconia Talk S'
+    renderWithRouter(<App />, '/')
+
+    const product = await screen.findByText(productModel)
+
+    fireEvent.click(product)
+
+    const productIdText = screen.getByText(productId)
+
+    expect(productIdText).toBeInTheDocument()
   })
 })
