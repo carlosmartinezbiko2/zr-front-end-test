@@ -17,10 +17,10 @@ describe('ProductDetailsPage', () => {
       `/${productId}`,
     )
 
-    const productBrandText = await screen.findByText(productBrand)
-    const productModelText = await screen.findByText(productModel)
+    const productBrandText = await screen.findAllByText(productBrand)
+    const productModelText = await screen.findAllByText(productModel)
 
-    expect(productBrandText).toBeInTheDocument()
-    expect(productModelText).toBeInTheDocument()
+    expect(productBrandText).toHaveLength(2)
+    expect(productModelText).toHaveLength(2)
   })
 })
