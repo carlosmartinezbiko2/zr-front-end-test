@@ -10,11 +10,3 @@ export const ProductListItemWrapper = styled.article`
 export const ProductListItemImage = styled.img`
   width: 100%;
 `
-
-export const DescriptionWrapper = styled.div``
-
-export const DescriptionItemTitle = styled.span`
-  font-weight: bold;
-`
-
-export const DescriptionItemValue = styled.span``
