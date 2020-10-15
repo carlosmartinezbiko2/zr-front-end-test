@@ -1,9 +1,10 @@
 import React from 'react'
+import { productService } from 'core/productService'
 
 export function ProductListPage() {
   const [productList, setProductList] = React.useState()
   React.useEffect(() => {
-    getProductList().then(setProductList)
+    productService.getProductList().then(setProductList)
   }, [])
 
   return (
@@ -14,12 +15,4 @@ export function ProductListPage() {
       ))}
     </>
   )
-}
-
-async function getProductList() {
-  const response = await fetch(
-    'https://front-test-api.herokuapp.com/api/product',
-  )
-  const productList = await response.json()
-  return productList
 }
