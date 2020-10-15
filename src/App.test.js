@@ -2,14 +2,11 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { App } from './App'
+import { renderWithRouter } from './utils/test/renderWithRouter'
 
 describe('ZR Mobile', () => {
   it('Muestra el header de la aplicación', () => {
-    render(
-      <MemoryRouter initialEntries={['/']}>
-        <App />
-      </MemoryRouter>,
-    )
+    renderWithRouter(<App />, '/')
 
     const headerText = screen.getByText('ZR Mobile')
 
@@ -17,11 +14,7 @@ describe('ZR Mobile', () => {
   })
 
   it('Muestra la página de listado de productos', () => {
-    render(
-      <MemoryRouter initialEntries={['/']}>
-        <App />
-      </MemoryRouter>,
-    )
+    renderWithRouter(<App />, '/')
 
     const listaDeProductosText = screen.getByText('Lista de productos')
 
@@ -30,11 +23,7 @@ describe('ZR Mobile', () => {
 
   it('Muestra la página de detalle de un producto', () => {
     const productId = 'productId'
-    render(
-      <MemoryRouter initialEntries={[`/${productId}`]}>
-        <App />
-      </MemoryRouter>,
-    )
+    renderWithRouter(<App />, `/${productId}`)
 
     const idProductoText = screen.getByText(productId)
 
