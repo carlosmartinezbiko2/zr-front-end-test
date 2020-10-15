@@ -21,7 +21,7 @@ describe('ProductListPage', () => {
 
     const searchInput = screen.getByRole('textbox', { name: /buscar:/i })
 
-    fireEvent.change(searchInput, { value: 'Iconia B1' })
+    fireEvent.change(searchInput, { target: { value: 'Iconia B1' } })
 
     const products = await screen.findAllByRole('article')
 
