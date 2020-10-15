@@ -1,6 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { ProductListItem } from './components/ProductListItem'
-
 import { useProductList } from './ProductListPage.hooks'
 import {
   ProductListContainer,
@@ -12,7 +12,7 @@ export function ProductListPage() {
   const { productList, isError, isLoading } = useProductList([])
   const [searchValue, setSearchValue] = React.useState('')
 
-  if (isLoading) {
+  if (isLoading || !productList || !productList.length) {
     return <>Cargando...</>
   }
 
@@ -36,7 +36,9 @@ export function ProductListPage() {
 
       <ProductListContainer>
         {filterProductsList(productList, searchValue).map((product) => (
-          <ProductListItem key={product.id} data={product} />
+          <Link to={`/${product.id}`} key={product.id}>
+            <ProductListItem data={product} />
+          </Link>
         ))}
       </ProductListContainer>
     </>

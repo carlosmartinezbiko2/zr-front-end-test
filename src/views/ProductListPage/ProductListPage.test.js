@@ -1,5 +1,6 @@
 import React from 'react'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
+import { renderWithRouter } from 'utils/test/renderWithRouter'
 
 import productList from 'mocks/fixtures/productList.json'
 
@@ -7,7 +8,7 @@ import { ProductListPage } from './ProductListPage'
 
 describe('ProductListPage', () => {
   it('Muestra el listado de productos del API', async () => {
-    render(<ProductListPage />)
+    renderWithRouter(<ProductListPage />, '/')
 
     for (let product of productList) {
       const productModelText = await screen.findByText(product.model)
@@ -17,7 +18,7 @@ describe('ProductListPage', () => {
   })
 
   it('Filtra por el campo de búsqueda', async () => {
-    render(<ProductListPage />)
+    renderWithRouter(<ProductListPage />, '/')
 
     const searchInput = screen.getByRole('textbox', { name: /buscar:/i })
 
