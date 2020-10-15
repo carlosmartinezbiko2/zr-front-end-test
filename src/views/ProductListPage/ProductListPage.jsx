@@ -9,7 +9,8 @@ import {
 } from './ProductListPage.styles'
 
 export function ProductListPage() {
-  const { productList, isError, isLoading } = useProductList()
+  const { productList, isError, isLoading } = useProductList([])
+  const [searchValue, setSearchValue] = React.useState('')
 
   if (isLoading) {
     return <>Cargando...</>
@@ -23,13 +24,32 @@ export function ProductListPage() {
     <>
       <ProductListHeader>
         <ProductListTitle>Lista de productos</ProductListTitle>
+        <label>
+          Buscar:{' '}
+          <input
+            name="search"
+            value={searchValue}
+            onChange={(event) => setSearchValue(event.target.value)}
+          />
+        </label>
       </ProductListHeader>
 
       <ProductListContainer>
-        {productList?.map((product) => (
+        {filterProductsList(productList, searchValue).map((product) => (
           <ProductListItem key={product.id} data={product} />
         ))}
       </ProductListContainer>
     </>
+  )
+}
+
+function filterProductsList(productList = [], filter = '') {
+  if (!filter) {
+    return productList
+  }
+
+  return productList.filter(
+    (product) =>
+      product.brand.includes(filter) || product.model.includes(filter),
   )
 }
