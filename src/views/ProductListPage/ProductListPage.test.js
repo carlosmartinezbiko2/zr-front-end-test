@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 
 import productList from 'mocks/fixtures/productList.json'
 
@@ -14,5 +14,17 @@ describe('ProductListPage', () => {
 
       expect(productModelText).toBeInTheDocument()
     }
+  })
+
+  it('Filtra por el campo de búsqueda', async () => {
+    render(<ProductListPage />)
+
+    const searchInput = screen.getByRole('textbox', { name: /buscar:/i })
+
+    fireEvent.change(searchInput, { value: 'Iconia B1' })
+
+    const products = await screen.findAllByRole('article')
+
+    expect(products).toHaveLength(2)
   })
 })
