@@ -1,4 +1,5 @@
 import React from 'react'
+import { ProductListItem } from './components/ProductListItem'
 
 import { useProductList } from './ProductListPage.hooks'
 
@@ -17,7 +18,7 @@ export function ProductListPage() {
     <>
       Lista de productos
       {productList?.map((product) => (
-        <article key={product.id}>{product.model}</article>
+        <ProductListItem key={product.id} data={product} />
       ))}
     </>
   )
