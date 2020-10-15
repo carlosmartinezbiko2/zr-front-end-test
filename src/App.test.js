@@ -1,9 +1,13 @@
 import React from 'react'
-import { render } from '@testing-library/react'
-import App from './App'
+import { render, screen } from '@testing-library/react'
+import { App } from './App'
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />)
-  const linkElement = getByText(/learn react/i)
-  expect(linkElement).toBeInTheDocument()
+describe('ZR Mobile', () => {
+  it('Renderiza la aplicación', () => {
+    render(<App />)
+
+    const holaMundo = screen.getByText('Hola mundo')
+
+    expect(holaMundo).toBeInTheDocument()
+  })
 })
