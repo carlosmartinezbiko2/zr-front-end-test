@@ -1,13 +1,13 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+import { Layout } from './components/Layout'
 
 import { ProductDetailsPage } from './ProductDetailsPage'
 import { ProductListPage } from './ProductListPage'
 
 export function App() {
   return (
-    <>
-      <header>ZR Mobile</header>
+    <Layout>
       <Switch>
         <Route exact path="/">
           <ProductListPage />
@@ -16,6 +16,6 @@ export function App() {
           <ProductDetailsPage />
         </Route>
       </Switch>
-    </>
+    </Layout>
   )
 }
