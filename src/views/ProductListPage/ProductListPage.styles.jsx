@@ -33,4 +33,5 @@ export const SearchInput = styled.input`
   background-color: ${colors.gray};
   border: none;
   border-radius: ${rem(sizes.tiny)};
+  font-size: ${rem(sizes.small)};
 `
