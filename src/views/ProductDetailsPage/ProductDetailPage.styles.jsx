@@ -9,13 +9,16 @@ export const ProductDetailPageContainer = styled.div`
 export const ProductDetailPageImage = styled.img`
   flex-grow: 1;
   flex-basis: 0;
+  flex-shrink: 1;
   width: 100%;
+  min-width: ${rem(600)};
   margin-right: ${rem(32)};
 `
 
 export const ProductDetailPageDescription = styled.div`
   flex-grow: 1;
   flex-basis: 0;
+  flex-shrink: 1;
 `
 
 export const ProductDetailBlock = styled.div`
