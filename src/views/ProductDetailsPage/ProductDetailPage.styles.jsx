@@ -29,15 +29,13 @@ export const ProductDetailBlock = styled.div`
   border: 4px solid ${colors.gray};
 `
 
-export const ProductListTitle = styled.h1`
-  font-size: ${rem(sizes.base)};
-`
-
 export const ProductModel = styled.h1`
   font-size: ${rem(sizes.base)};
+  margin-bottom: ${rem(sizes.tiny)};
 `
 
 export const ProductBrand = styled.h2`
   font-size: ${rem(sizes.small)};
   color: ${colors.middleGray};
+  margin-bottom: ${rem(sizes.base)};
 `
