@@ -52,7 +52,7 @@ export function AddToCart({ productId, colors, storages }) {
         onClick={handleAddToCartSubmit}
         disabled={!selectedColor || !selectedStorage || isLoading}
       >
-        Agregar al carro
+        {isLoading ? 'Procesando...' : 'Agregar al carro'}
       </AddToCartButton>
     </>
   )
