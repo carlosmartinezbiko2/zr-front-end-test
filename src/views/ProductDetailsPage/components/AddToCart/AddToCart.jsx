@@ -2,6 +2,11 @@ import React from 'react'
 
 import { cartService } from 'core/cartService'
 import { useCartContext } from 'views/components/CartContext'
+import {
+  AddToCartInputLabel,
+  Select,
+  AddToCartButton,
+} from './AddToCart.styles'
 
 export function AddToCart({ productId, colors, storages }) {
   const [selectedColor, setSelectedColor] = React.useState(
@@ -15,34 +20,40 @@ export function AddToCart({ productId, colors, storages }) {
 
   return (
     <>
-      <select
-        value={selectedColor}
-        onChange={(event) => setSelectedColor(event.target.value)}
-      >
-        {!selectedColor && <option>Elige color</option>}
-        {colors.map((color) => (
-          <option key={color.code} value={color.code}>
-            {color.name}
-          </option>
-        ))}
-      </select>
-      <select
-        value={selectedStorage}
-        onChange={(event) => setSelectedStorage(event.target.value)}
-      >
-        {!selectedStorage && <option>Elige almacenamiento</option>}
-        {storages.map((storage) => (
-          <option key={storage.code} value={storage.code}>
-            {storage.name}
-          </option>
-        ))}
-      </select>
-      <button
+      <AddToCartInputLabel>
+        Selecciona color:
+        <Select
+          value={selectedColor}
+          onChange={(event) => setSelectedColor(event.target.value)}
+        >
+          {!selectedColor && <option>Elige color</option>}
+          {colors.map((color) => (
+            <option key={color.code} value={color.code}>
+              {color.name}
+            </option>
+          ))}
+        </Select>
+      </AddToCartInputLabel>
+      <AddToCartInputLabel>
+        Selecciona almacenamiento:
+        <Select
+          value={selectedStorage}
+          onChange={(event) => setSelectedStorage(event.target.value)}
+        >
+          {!selectedStorage && <option>Elige almacenamiento</option>}
+          {storages.map((storage) => (
+            <option key={storage.code} value={storage.code}>
+              {storage.name}
+            </option>
+          ))}
+        </Select>
+      </AddToCartInputLabel>
+      <AddToCartButton
         onClick={handleAddToCartSubmit}
         disabled={!selectedColor || !selectedStorage || isLoading}
       >
         Agregar al carro
-      </button>
+      </AddToCartButton>
     </>
   )
 
