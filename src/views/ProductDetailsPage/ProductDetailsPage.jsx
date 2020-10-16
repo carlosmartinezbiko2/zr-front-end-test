@@ -7,6 +7,8 @@ import {
   ProductDetailPageContainer,
   ProductDetailPageDescription,
   ProductDetailPageImage,
+  ProductModel,
+  ProductBrand,
 } from './ProductDetailPage.styles'
 import { useProductDetail } from './ProductDetailsPage.hooks'
 
@@ -24,8 +26,8 @@ export function ProductDetailsPage() {
 
   return (
     <>
-      <h2>{productDetail.model}</h2>
-      <h3>{productDetail.brand}</h3>
+      <ProductModel>{productDetail.model}</ProductModel>
+      <ProductBrand>{productDetail.brand}</ProductBrand>
       <ProductDetailPageContainer>
         <ProductDetailPageImage src={productDetail.imgUrl} />
         <ProductDetailPageDescription>
