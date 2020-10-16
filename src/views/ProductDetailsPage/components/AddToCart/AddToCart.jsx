@@ -1,12 +1,17 @@
 import React from 'react'
 
-export function AddToCart({ colors, storages, onSubmit }) {
+import { cartService } from 'core/cartService'
+import { useCartContext } from 'views/components/CartContext'
+
+export function AddToCart({ productId, colors, storages }) {
   const [selectedColor, setSelectedColor] = React.useState(
     colors.length === 1 ? colors[0].code : undefined,
   )
   const [selectedStorage, setSelectedStorage] = React.useState(
     storages.length === 1 ? storages[0].code : undefined,
   )
+  const { setNumberOfItems } = useCartContext()
+  const [isLoading, setIsLoading] = React.useState(false)
 
   return (
     <>
@@ -33,11 +38,20 @@ export function AddToCart({ colors, storages, onSubmit }) {
         ))}
       </select>
       <button
-        onClick={() => onSubmit({ selectedColor, selectedStorage })}
-        disabled={!selectedColor || !selectedStorage}
+        onClick={handleAddToCartSubmit}
+        disabled={!selectedColor || !selectedStorage || isLoading}
       >
         Agregar al carro
       </button>
     </>
   )
+
+  function handleAddToCartSubmit() {
+    setIsLoading(true)
+
+    cartService
+      .addProduct(productId, selectedColor, selectedStorage)
+      .then(({ count }) => setNumberOfItems(count))
+      .finally(() => setIsLoading(false))
+  }
 }

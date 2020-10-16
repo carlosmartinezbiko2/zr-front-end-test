@@ -1,7 +1,5 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { cartService } from '../../core/cartService'
-import { useCartContext } from '../components/CartContext'
 import { DescriptionItem } from '../components/DescriptionItem'
 import { AddToCart } from './components/AddToCart'
 import {
@@ -15,7 +13,6 @@ import { useProductDetail } from './ProductDetailsPage.hooks'
 export function ProductDetailsPage() {
   const { productId } = useParams()
   const { isError, isLoading, productDetail } = useProductDetail(productId)
-  const { setNumberOfItems } = useCartContext()
 
   if (isLoading || !productDetail) {
     return <>Cargando...</>
@@ -68,13 +65,9 @@ export function ProductDetailsPage() {
           </ProductDetailBlock>
           <ProductDetailBlock>
             <AddToCart
+              productId={productDetail.id}
               colors={productDetail.options.colors}
               storages={productDetail.options.storages}
-              onSubmit={({ selectedColor, selectedStorage }) =>
-                cartService
-                  .addProduct(productDetail.id, selectedColor, selectedStorage)
-                  .then(({ count }) => setNumberOfItems(count))
-              }
             />
           </ProductDetailBlock>
         </ProductDetailPageDescription>
