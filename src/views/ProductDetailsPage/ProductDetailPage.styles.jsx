@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { rem } from 'polished'
+import { sizes, colors } from 'theme'
 
 export const ProductDetailPageContainer = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ export const ProductDetailPageImage = styled.img`
   flex-shrink: 1;
   width: 100%;
   min-width: ${rem(600)};
-  margin-right: ${rem(32)};
+  margin-right: ${rem(sizes.medium)};
 `
 
 export const ProductDetailPageDescription = styled.div`
@@ -22,8 +23,8 @@ export const ProductDetailPageDescription = styled.div`
 `
 
 export const ProductDetailBlock = styled.div`
-  padding: ${rem(16)};
-  margin-bottom: ${rem(16)};
-  border-radius: ${rem(16)};
-  border: 4px solid #eee;
+  padding: ${rem(sizes.small)};
+  margin-bottom: ${rem(sizes.small)};
+  border-radius: ${rem(sizes.small)};
+  border: 4px solid ${colors.gray};
 `
