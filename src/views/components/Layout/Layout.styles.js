@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { rem } from 'polished'
+import { sizes } from 'theme'
 
 export const LayoutContainer = styled.div`
   max-width: ${rem(1200)};
@@ -7,5 +8,5 @@ export const LayoutContainer = styled.div`
 `
 
 export const ContentContainer = styled.div`
-  padding-top: ${rem(16)};
+  padding-top: ${rem(sizes.small)};
 `
