@@ -13,12 +13,12 @@ export function ProductListPage() {
   const { productList, isError, isLoading } = useProductList([])
   const [searchValue, setSearchValue] = React.useState('')
 
-  if (isLoading || !productList || !productList.length) {
-    return <>Cargando...</>
-  }
-
   if (isError) {
     return <>Ups! Ha ocurrido un error</>
+  }
+
+  if (isLoading || !productList || !productList.length) {
+    return <>Cargando...</>
   }
 
   return (

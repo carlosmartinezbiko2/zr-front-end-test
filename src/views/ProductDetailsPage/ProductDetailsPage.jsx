@@ -16,12 +16,12 @@ export function ProductDetailsPage() {
   const { productId } = useParams()
   const { isError, isLoading, productDetail } = useProductDetail(productId)
 
-  if (isLoading || !productDetail) {
-    return <>Cargando...</>
-  }
-
   if (isError) {
     return <>Ups! Ha ocurrido un error</>
+  }
+
+  if (isLoading || !productDetail) {
+    return <>Cargando...</>
   }
 
   return (
