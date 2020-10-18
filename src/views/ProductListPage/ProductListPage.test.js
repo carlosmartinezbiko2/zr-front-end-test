@@ -22,7 +22,7 @@ describe('ProductListPage', () => {
 
   it('Mustra un mensaje de error en caso de fallar la petición al API', async () => {
     server.use(
-      rest.get('${process.env.REACT_APP_API_URL}/product', (req, res, ctx) => {
+      rest.get(`${process.env.REACT_APP_API_URL}/product`, (req, res, ctx) => {
         return res(ctx.status(500))
       }),
     )
