@@ -1,6 +1,6 @@
 async function addProduct(id, colorCode, storageCode) {
   const response = await fetch(
-    'https://front-test-api.herokuapp.com/api/cart',
+    `${process.env.REACT_APP_API_URL}/cart`,
     {
       method: 'POST',
       headers: {
