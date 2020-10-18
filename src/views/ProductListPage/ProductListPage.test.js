@@ -7,9 +7,21 @@ import productList from 'mocks/fixtures/productList.json'
 import { server } from 'mocks/server'
 
 import { ProductListPage } from './ProductListPage'
-import { ProductDetailsPage } from 'views/ProductDetailsPage/ProductDetailsPage'
 
 describe('ProductListPage', () => {
+  it('Mustra un mensaje de error en caso de fallar la petición al API', async () => {
+    server.use(
+      rest.get(`${process.env.REACT_APP_API_URL}/product`, (req, res, ctx) =>
+        res(ctx.status(500), ctx.json({ error: 'Error' })),
+      ),
+    )
+
+    renderWithRouter(<ProductListPage />, '/')
+    const errorText = await screen.findByText('Ups! Ha ocurrido un error')
+
+    expect(errorText).toBeInTheDocument()
+  })
+
   it('Muestra el listado de productos del API', async () => {
     renderWithRouter(<ProductListPage />, '/')
 
@@ -18,19 +30,6 @@ describe('ProductListPage', () => {
 
       expect(productModelText).toBeInTheDocument()
     }
-  })
-
-  it('Mustra un mensaje de error en caso de fallar la petición al API', async () => {
-    server.use(
-      rest.get(`${process.env.REACT_APP_API_URL}/product`, (req, res, ctx) => {
-        return res(ctx.status(500))
-      }),
-    )
-
-    renderWithRouter(<ProductListPage />, '/')
-    const errorText = await screen.findByTestId('Ups! Ha ocurrido un error')
-
-    expect(errorText).toBeInTheDocument()
   })
 
   it('Filtra por el campo de búsqueda', async () => {
